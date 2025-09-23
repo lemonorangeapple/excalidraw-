@@ -751,45 +751,6 @@ const ExcalidrawWrapper = () => {
     );
   }
 
-  const ExcalidrawPlusCommand = {
-    label: "Excalidraw+",
-    category: DEFAULT_CATEGORIES.links,
-    predicate: true,
-    icon: <div style={{ width: 14 }}>{ExcalLogo}</div>,
-    keywords: ["plus", "cloud", "server"],
-    perform: () => {
-      window.open(
-        `${
-          import.meta.env.VITE_APP_PLUS_LP
-        }/plus?utm_source=excalidraw&utm_medium=app&utm_content=command_palette`,
-        "_blank",
-      );
-    },
-  };
-  const ExcalidrawPlusAppCommand = {
-    label: "Sign up",
-    category: DEFAULT_CATEGORIES.links,
-    predicate: true,
-    icon: <div style={{ width: 14 }}>{ExcalLogo}</div>,
-    keywords: [
-      "excalidraw",
-      "plus",
-      "cloud",
-      "server",
-      "signin",
-      "login",
-      "signup",
-    ],
-    perform: () => {
-      window.open(
-        `${
-          import.meta.env.VITE_APP_PLUS_APP
-        }?utm_source=excalidraw&utm_medium=app&utm_content=command_palette`,
-        "_blank",
-      );
-    },
-  };
-
   return (
     <div
       style={{ height: "100%" }}
@@ -1036,71 +997,6 @@ const ExcalidrawWrapper = () => {
                   "_blank",
                   "noopener noreferrer",
                 );
-              },
-            },
-            {
-              label: t("labels.discordChat"),
-              category: DEFAULT_CATEGORIES.links,
-              predicate: true,
-              icon: DiscordIcon,
-              keywords: [
-                "chat",
-                "talk",
-                "contact",
-                "bugs",
-                "requests",
-                "report",
-                "feedback",
-                "suggestions",
-                "social",
-                "community",
-              ],
-              perform: () => {
-                window.open(
-                  "https://discord.gg/UexuTaE",
-                  "_blank",
-                  "noopener noreferrer",
-                );
-              },
-            },
-            {
-              label: "YouTube",
-              icon: youtubeIcon,
-              category: DEFAULT_CATEGORIES.links,
-              predicate: true,
-              keywords: ["features", "tutorials", "howto", "help", "community"],
-              perform: () => {
-                window.open(
-                  "https://youtube.com/@excalidraw",
-                  "_blank",
-                  "noopener noreferrer",
-                );
-              },
-            },
-            ...(isExcalidrawPlusSignedUser
-              ? [
-                  {
-                    ...ExcalidrawPlusAppCommand,
-                    label: "Sign in / Go to Excalidraw+",
-                  },
-                ]
-              : [ExcalidrawPlusCommand, ExcalidrawPlusAppCommand]),
-
-            {
-              label: t("overwriteConfirm.action.excalidrawPlus.button"),
-              category: DEFAULT_CATEGORIES.export,
-              icon: exportToPlus,
-              predicate: true,
-              keywords: ["plus", "export", "save", "backup"],
-              perform: () => {
-                if (excalidrawAPI) {
-                  exportToExcalidrawPlus(
-                    excalidrawAPI.getSceneElements(),
-                    excalidrawAPI.getAppState(),
-                    excalidrawAPI.getFiles(),
-                    excalidrawAPI.getName(),
-                  );
-                }
               },
             },
             {
