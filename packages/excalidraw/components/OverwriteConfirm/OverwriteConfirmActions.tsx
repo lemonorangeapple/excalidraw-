@@ -79,7 +79,7 @@ const Actions = Object.assign(
   },
   {
     ExportToImage,
-    SaveToDisk,
+    SaveToDisk
   },
 );
 
